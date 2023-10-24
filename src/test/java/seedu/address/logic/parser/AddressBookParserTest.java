@@ -6,6 +6,7 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CUSTOMER;
+import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PROPERTY;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.logic.commands.AddCustomerCommand;
 import seedu.address.logic.commands.ClearCommand;
-import seedu.address.logic.commands.DeleteCommand;
+import seedu.address.logic.commands.DeleteCustomerCommand;
+import seedu.address.logic.commands.DeletePropertyCommand;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.FindCommand;
@@ -50,6 +52,13 @@ public class AddressBookParserTest {
         DeleteCustomerCommand command = (DeleteCustomerCommand) parser.parseCommand(
                 DeleteCustomerCommand.COMMAND_WORD + " " + INDEX_FIRST_CUSTOMER.getOneBased());
         assertEquals(new DeleteCustomerCommand(INDEX_FIRST_CUSTOMER), command);
+    }
+
+    @Test
+    public void parseCommand_delprop() throws Exception {
+        DeletePropertyCommand command = (DeletePropertyCommand) parser.parseCommand(
+                DeletePropertyCommand.COMMAND_WORD + " " + INDEX_FIRST_PROPERTY.getOneBased());
+        assertEquals(new DeletePropertyCommand(INDEX_FIRST_PROPERTY), command);
     }
 
     @Test
@@ -90,7 +99,7 @@ public class AddressBookParserTest {
     @Test
     public void parseCommand_unrecognisedInput_throwsParseException() {
         assertThrows(ParseException.class, String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE), ()
-            -> parser.parseCommand(""));
+                -> parser.parseCommand(""));
     }
 
     @Test

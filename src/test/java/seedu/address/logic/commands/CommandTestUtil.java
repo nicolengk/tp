@@ -19,6 +19,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.customer.Customer;
 import seedu.address.model.customer.NameContainsKeywordsPredicate;
+import seedu.address.model.property.PropNameContainsKeywordsPredicate;
 import seedu.address.model.property.Property;
 import seedu.address.testutil.EditCustomerDescriptorBuilder;
 
@@ -76,7 +77,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel);
             assertEquals(expectedCommandResult, result);
@@ -91,7 +92,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
@@ -130,8 +131,8 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredPropertyList().size());
 
         Property property = model.getFilteredPropertyList().get(targetIndex.getZeroBased());
-        final String[] splitName = property.getName().fullName.split("\\s+");
-        model.updateFilteredPropertyList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitName = property.getPropName().fullName.split("\\s+");
+        model.updateFilteredPropertyList(new PropNameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredPropertyList().size());
     }

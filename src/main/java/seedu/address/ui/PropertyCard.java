@@ -49,9 +49,9 @@ public class PropertyCard extends UiPart<Region> {
         super(FXML);
         this.property = property;
         id.setText(displayedIndex + ". ");
-        name.setText(property.getName().fullName);
-        phone.setText(property.getPhone().value);
-        address.setText(property.getAddress().value);
+        name.setText(property.getPropName().fullName);
+        phone.setText(property.getPropPhone().value);
+        address.setText(property.getPropAddress().value);
         price.setText(property.getPrice().value);
         property.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))

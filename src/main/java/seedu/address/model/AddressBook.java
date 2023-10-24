@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.model.customer.Customer;
 import seedu.address.model.customer.UniqueCustomerList;
+import seedu.address.model.property.Property;
+import seedu.address.model.property.UniquePropertyList;
 
 /**
  * Wraps all data at the address-book level
@@ -16,6 +18,7 @@ import seedu.address.model.customer.UniqueCustomerList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniqueCustomerList customers;
+    private final UniquePropertyList properties;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -26,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         customers = new UniqueCustomerList();
+        properties = new UniquePropertyList();
     }
 
     public AddressBook() {}
@@ -73,6 +77,14 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void addCustomer(Customer p) {
         customers.add(p);
+    }
+
+    /**
+     * Adds a property to the address book.
+     * The property must not already exist in the address book.
+     */
+    public void addProperty(Property p) {
+        properties.add(p);
     }
 
     /**

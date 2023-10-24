@@ -36,11 +36,14 @@ public class Property {
         this.tags.addAll(tags);
     }
 
-    public PropName getName() {
+    public PropName getPropName() {
         return propName;
     }
+    public PropAddress getPropAddress() {
+        return propAddress;
+    }
 
-    public PropPhone getPhone() {
+    public PropPhone getPropPhone() {
         return propPhone;
     }
 
@@ -48,9 +51,7 @@ public class Property {
         return price;
     }
 
-    public PropAddress getAddress() {
-        return propAddress;
-    }
+
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
@@ -70,7 +71,7 @@ public class Property {
         }
 
         return otherProperty != null
-                && otherProperty.getName().equals(getName());
+                && otherProperty.getPropName().equals(getPropName());
     }
 
     /**

@@ -52,10 +52,10 @@ class JsonAdaptedProperty {
      * Converts a given {@code Person} into this class for Jackson use.
      */
     public JsonAdaptedProperty(Property source) {
-        name = source.getName().fullName;
-        phone = source.getPhone().value;
+        name = source.getPropName().fullName;
+        phone = source.getPropPhone().value;
         price = source.getPrice().value;
-        address = source.getAddress().value;
+        address = source.getPropAddress().value;
         tags.addAll(source.getTags().stream()
                 .map(JsonAdaptedTag::new)
                 .collect(Collectors.toList()));

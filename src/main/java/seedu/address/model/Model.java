@@ -97,9 +97,9 @@ public interface Model {
     void deleteProperty(Property property);
 
     /**
-    * Adds the given customer.
-    * {@code customer} must not already exist in the address book.
-    */
+     * Adds the given customer.
+     * {@code customer} must not already exist in the address book.
+     */
     void addCustomer(Customer customer);
 
     /**
@@ -137,7 +137,7 @@ public interface Model {
     void updateFilteredCustomerList(Predicate<Customer> predicate);
 
     /**
-     * Updates the filter of the filtered person list to filter by the given {@code predicate}.
+     * Updates the filter of the filtered property list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredPropertyList(Predicate<Property> predicate);
