@@ -1,2 +1,4 @@
-package seedu.address.testutil;public class TypicalProperties {
+package seedu.address.testutil;
+
+public class TypicalProperties {
 }

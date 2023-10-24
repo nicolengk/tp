@@ -19,6 +19,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.customer.Customer;
 import seedu.address.model.customer.NameContainsKeywordsPredicate;
+import seedu.address.model.property.Property;
 import seedu.address.testutil.EditCustomerDescriptorBuilder;
 
 /**
@@ -123,6 +124,16 @@ public class CommandTestUtil {
         model.updateFilteredCustomerList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredCustomerList().size());
+    }
+
+    public static void showPropertyAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredPropertyList().size());
+
+        Property property = model.getFilteredPropertyList().get(targetIndex.getZeroBased());
+        final String[] splitName = property.getName().fullName.split("\\s+");
+        model.updateFilteredPropertyList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+
+        assertEquals(1, model.getFilteredPropertyList().size());
     }
 
 }
